@@ -8,6 +8,7 @@ import numpy as np
 from tensorflow.keras import backend as K
 from tensorflow.keras import layers
 from tensorflow.keras import optimizers
+from tensorflow_addons.optimizers import AdamW
 from tensorflow.keras.callbacks import ModelCheckpoint, LearningRateScheduler
 from tensorflow.keras.models import Model
 from tensorflow.keras.layers import Input, Conv2D, MaxPooling2D, Dropout, concatenate, UpSampling2D
@@ -56,7 +57,10 @@ def unet(pretrained_weights = None, input_size = (256,256,1)):
 
     model = Model(inputs, conv10)
 
-    model.compile(optimizer = optimizers.Adam(learning_rate=1e-5), loss = 'binary_crossentropy', metrics = ['accuracy'])
+    # ? Уменьшение весов weight decay
+    model.compile(optimizer = AdamW(learning_rate=1e-5, weight_decay=1e-1), loss = 'binary_crossentropy', metrics = ['accuracy'])
+
+    # model.compile(optimizer = Adam(learning_rate=1e-5), loss = 'binary_crossentropy', metrics = ['accuracy'])
 
     # model.summary()
 
