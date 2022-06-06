@@ -64,7 +64,7 @@ def GenerateTrainData(save_image_path, save_label_path, save_test_path, dir_used
     info_file.close()
 
 def CreateChartStatisticOfLearning(n_epoch = 0, loss = [], acc = []):
-    epochs = np.linspace(0, n_epoch, n_epoch)
+    epochs = np.linspace(1, n_epoch, n_epoch)
     print(epochs)
     if loss and acc and n_epoch:
         plt.figure(figsize=(10.,5.))
@@ -72,6 +72,7 @@ def CreateChartStatisticOfLearning(n_epoch = 0, loss = [], acc = []):
         plt.xlabel("epochs")
         plt.ylabel("loss")
         plt.plot(epochs, loss, "orange")
+        plt.grid()
         plt.show()
 
         plt.figure(figsize=(8.,5.))
@@ -79,5 +80,6 @@ def CreateChartStatisticOfLearning(n_epoch = 0, loss = [], acc = []):
         plt.xlabel("epochs")
         plt.ylabel("accuracy")
         plt.plot(epochs, acc, "blue")
+        plt.grid()
         plt.show()
 
