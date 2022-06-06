@@ -57,9 +57,9 @@ def unet(pretrained_weights = None, input_size = (256,256,1)):
 
     model = Model(inputs, conv10)
 
-    # ? Уменьшение весов weight decay
-    model.compile(optimizer = AdamW(learning_rate=1e-5, weight_decay=1e-1), loss = 'binary_crossentropy', metrics = ['accuracy'])
-
+    # AdamW
+    model.compile(optimizer = AdamW(learning_rate=1e-5, weight_decay=1e-2), loss = 'binary_crossentropy', metrics = ['accuracy'])
+    # Adam
     # model.compile(optimizer = Adam(learning_rate=1e-5), loss = 'binary_crossentropy', metrics = ['accuracy'])
 
     # model.summary()
