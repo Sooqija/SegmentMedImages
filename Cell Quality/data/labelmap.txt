@@ -1,0 +1,4 @@
+# label:color_rgb:parts:actions
+Cell:229,181,87::
+Decaying Cell:132,120,161::
+background:0,0,0::
